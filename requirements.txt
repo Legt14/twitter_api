@@ -1,4 +1,6 @@
-fastapi
+fastapi~=0.85.1
 email_validator
-uvicorn
+uvicorn~=0.18.3
 sqlalchemy~=1.4.41
+cryptography~=38.0.1
+pydantic~=1.10.2

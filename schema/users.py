@@ -1,15 +1,27 @@
-from datetime import datetime, date
-from typing import Optional
-from uuid import UUID
+from typing import List, Optional
+
 
 from pydantic import BaseModel, Field, EmailStr
 
+from .tweet import Tweet
 
 class BaseUser(BaseModel):
-    id: Optional[int] = Field(default=None)
-    name: str = Field(...)
-    lastname: str = Field(...)
-    age: Optional[int] = Field(default=0)
-    user_name: str = Field(...)
-    email: EmailStr = Field(...)
-    password: str = Field(..., min_length=8)
+    email: EmailStr
+    name: str 
+    lastname: str
+    age: Optional[int]
+    user_name: str
+    description: Optional[str]
+
+
+class CreateUser(BaseUser):
+    password: str
+
+class User(BaseUser):
+    id: int
+    is_verified: Optional[bool]
+    tweets: List[Tweet] = []
+    
+    
+    class Config:
+        orm_mode = True
