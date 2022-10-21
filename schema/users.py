@@ -12,6 +12,7 @@ class BaseUser(BaseModel):
     age: Optional[int]
     user_name: str
     description: Optional[str]
+    is_verified: bool
 
 
 class CreateUser(BaseUser):
@@ -20,7 +21,6 @@ class CreateUser(BaseUser):
 
 class User(BaseUser):
     id: int
-    is_verified: Optional[bool] = False
     tweet_id: list[Tweet] = []
 
     class Config:

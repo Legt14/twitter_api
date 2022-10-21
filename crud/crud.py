@@ -22,7 +22,8 @@ def create_user(
         description=user.description,
         age=user.age,
         email=user.email,
-        password=password_encryp,)
+        password=password_encryp,
+        is_verified=user.is_verified)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
