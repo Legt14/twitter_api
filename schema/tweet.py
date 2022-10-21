@@ -1,22 +1,22 @@
-from typing import Optional
 from datetime import date
+from typing import Optional
 
-from pydantic import BaseModel, Field
-
+from pydantic import BaseModel
 
 
 class BaseTweet(BaseModel):
-    content: str = Field(...)
-    tweet_date: str = date.today()
+    date = date.today()
+    like: int
+    comment: int
+    retweet: int
+
 
 class CreateTweet(BaseTweet):
-    pass
+    content: str
 
 
-class Tweet(BaseTweet):
-    like_count: int
-    comment_count: int
-    retweet_count: int
+class Tweet(CreateTweet):
+    id: int
 
     class Config:
         orm_mode = True

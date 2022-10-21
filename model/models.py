@@ -15,18 +15,15 @@ class Users(Base):
     is_verified = Column(Boolean)
     password = Column(String(250))
     description = Column(String(250))
-
     tweet_id = relationship('Tweets', back_populates='user')
-
-    
 
 
 class Tweets(Base):
     __tablename__ = 'tweets'
-    tweet_id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
     content = Column(String(256))
     like = Column(Integer)
-    comment = Column(String(256))
+    comment = Column(Integer)
     retweet = Column(Integer)
     date = Column(Date)
 

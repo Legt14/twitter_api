@@ -1,13 +1,13 @@
 from typing import List, Optional
 
+from pydantic import BaseModel, EmailStr
 
-from pydantic import BaseModel, Field, EmailStr
+from schema.tweet import Tweet
 
-from .tweet import Tweet
 
 class BaseUser(BaseModel):
     email: EmailStr
-    name: str 
+    name: str
     lastname: str
     age: Optional[int]
     user_name: str
@@ -17,11 +17,14 @@ class BaseUser(BaseModel):
 class CreateUser(BaseUser):
     password: str
 
+
 class User(BaseUser):
     id: int
-    is_verified: Optional[bool]
-    tweets: List[Tweet] = []
-    
-    
+    is_verified: Optional[bool] = False
+    tweet_id: list[Tweet] = []
+
     class Config:
         orm_mode = True
+
+
+
